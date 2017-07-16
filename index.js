@@ -14,7 +14,11 @@ app.use(bodyParser.json())
 app.get('/facebook', function (req, res) {
   console.log('query:', req.query);
   console.log('body:', req.body);
-  res.send('hello facebook from GET');
+    if (req.query['hub.verify_token'] === 'okok') {
+      res.send(req.query['hub.challenge']);
+    } else {
+      res.send('Error, wrong validation token');    
+    }
 })
 
 app.post('/facebook', function (req, res) {
