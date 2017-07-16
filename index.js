@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const request = require('request')
 
 const PORT = process.env.PORT || 3000
 const FACEBOOK_ACCESS_TOKEN = 'EAAD2xQkzR9MBADq63da4uWWYAlRYc1VvVNDqF0XrXEhZAZBboWQqA69RI7jznkgMCYjpj0UZCZCNZBV2mH7CpMDZAUaJTh8pYRbMTMWIBu9tkPQH4aHhbJCYsD5QZBxF53Lm5VLtZCYlyQlsiTZBv7GubOEjDus21JJBCK02sfYQndQZDZD';
@@ -23,6 +24,8 @@ app.get('/facebook', function (req, res) {
 
 // handler receiving messages
 app.post('/facebook', function (req, res) {
+    console.log('query:', req.query);
+    console.log('body:', req.body);
     let events = req.body.entry[0].messaging
     for (i = 0; i < events.length; i++) {
         let event = events[i]
