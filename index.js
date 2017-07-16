@@ -7,6 +7,7 @@ const app = express()
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
+// test 
 // parse application/json
 app.use(bodyParser.json())
 
